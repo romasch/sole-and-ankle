@@ -31,19 +31,19 @@ const Header = () => {
 
 const MainHeader = styled.div`
   display: flex;
-  align-items: center;
+  align-items: baseline;
   height: 72px;
 
-  padding: 0 32px;
+  padding: 18px 32px;
   border-bottom: 1px solid ${COLORS.gray[300]};
 `;
 
 const LogoWrapper = styled.div`
-  flex: 0 0 ${140/16}rem;
+  flex: 1;
 `;
 
 const Nav = styled.nav`
-  flex: 1;
+  margin: 0 48px;
 
   display: flex;
   justify-content: center;
