@@ -5,6 +5,17 @@ import {COLORS, WEIGHTS} from '../../constants';
 import {formatPrice, isNewShoe, pluralize} from '../../utils';
 import Spacer from '../Spacer';
 
+const TAGS = {
+    'on-sale': {
+        label: "Sale",
+        color: COLORS.primary,
+    },
+    'new-release': {
+        label: "Just Released!",
+        color: COLORS.secondary,
+    }
+}
+
 const ShoeCard = ({
                       slug,
                       name,
@@ -31,11 +42,14 @@ const ShoeCard = ({
             ? 'new-release'
             : 'default'
 
+    const tag = TAGS[variant];
+
     return (
         <Link href={`/shoe/${slug}`}>
             <Wrapper>
                 <ImageWrapper>
                     <Image alt="" src={imageSrc}/>
+                    {tag && <ImageTag style={{'--color': tag.color}}>{tag.label}</ImageTag>}
                 </ImageWrapper>
                 <Spacer size={12}/>
                 <Row>
@@ -62,6 +76,20 @@ const Wrapper = styled.article``;
 
 const ImageWrapper = styled.div`
   position: relative;
+`;
+
+const ImageTag = styled.div`
+  position: absolute;
+  top: 12px;
+  right: -4px;
+
+  padding: 4px 8px;
+  border-radius: 2px;
+  background-color: var(--color);
+
+  font-size: ${14 / 16}rem;
+  font-weight: ${WEIGHTS.medium};
+  color: ${COLORS.white};
 `;
 
 const Image = styled.img`
